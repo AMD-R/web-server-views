@@ -31,11 +31,6 @@ div.bar {
   position: absolute;
 }
 
-h1.title {
-  font-size: 5vh;
-  text-align: center;
-}
-
 button.call-home {
   width: 49%;
   height: 70%;
