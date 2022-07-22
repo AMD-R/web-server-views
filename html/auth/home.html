@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/amd-r/home.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="https://kit.fontawesome.com/55e3235dcf.js" crossorigin="anonymous"></script>
+    <script src="scripts/ejs.min.js"></script>
+    <title>AMD-R HomePage</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="media/auth/Logo.jpg" alt="University Logo">
+      </div>
+    </header>
+
+    <h1 class="title"> HOME PAGE  </h1>
+
+    <p class="introduction">AMD-R is an Automated Mail Delivery Robot.</p>
+    <section class="menu">
+
+      <div class="menu-item">
+        <i class="fa-solid fa-id-card"></i>
+        <a href="/register" class="menu-item" > Register</a>
+
+      </div>
+      <div class="menu-item">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        <a href="/login" class="menu-item">Login</a>
+      </div>
+    </section>
+    <% var names = ["hi", "bye", "a", "b", "c", "d"] %>
+    <% for (let name of names) { %>
+    <div><%= name%></div>
+    <% } %>
+    <footer class="footer">
+      <p class="footer-item">
+        For enquiries or assistance, please contact us by the following
+      </p>
+      <ul class="contact-list">
+        <div class="contact-list-block">
+          <li class="contact-list-item">
+
+
+            <i class="fa-solid fa-phone"></i>
+            <p class="description">+6012696969</p>
+
+          </li>
+        </div>
+        <div class="contact-list-block">
+          <li class="contact-list-item">
+
+
+            <i class="fa-brands fa-google"></i>
+            <p class="description">https://www.nottingham.edu.my</p>
+
+          </li>
+        </div>
+        <div class="contact-list-block">
+          <li class="contact-list-item">
+
+
+            <i class="fa-brands fa-instagram"></i>
+            <p class="description">@UNM</p>
+
+          </li>
+        </div>
+      </ul>
+    </footer>
+    <script src="scripts/render_ejs.js"></script>
+  </body>
+</html>
