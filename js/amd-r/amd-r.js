@@ -24,11 +24,7 @@ marker.on('move', (e) => {
 });
 
 async function getData(id) {
-  const res = await fetch('/api/amd-r/getData', {
-    method: 'POST',
-    body: JSON.stringify({ id }),
-    headers: { 'Content-Type': 'application/json' }
-  });
+  const res = await fetch(`/api/amd-r/getData?id=${id}`);
   const data = await res.json()
 
   // Changing elements
