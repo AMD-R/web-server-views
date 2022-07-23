@@ -48,6 +48,11 @@ body {
   font-size: var(--fs-body);
   line-height: 1.6;
   background-color: var(--clr-background);
+
+  /* https://stackoverflow.com/questions/3525581/how-to-align-footer-div-to-the-bottom-of-the-page
+     https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook/Sticky_footers */
+  min-height: 100vh;
+  display: grid;
 }
 
 img {
@@ -78,10 +83,12 @@ div.logo {
 }
 
 header {
+  height: 15vh;
   background-color: var(--clr-dark);
 }
 
 footer {
+  margin-top: 5vh;
   bottom: 0;
   width: 100%;
   background-color: var(--clr-dark);
