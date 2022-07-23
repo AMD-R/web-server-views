@@ -52,17 +52,21 @@ body {
 
 img {
   display: block;
-  height: 15vh;
+  height: 100%;
   right: 0;
-  position: absolute;
+
+  /* https://stackoverflow.com/questions/12394866/how-to-display-images-inline */
+  float: right;
 }
 
 h1 {
   margin: 0;
 }
 
-.logo {
-  height: 15vh;
+div.logo {
+  height: 100%;
+  width: 30%;
+  float: right;
 }
 
 .title {
