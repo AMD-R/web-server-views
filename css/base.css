@@ -59,9 +59,6 @@ img {
   display: block;
   height: 100%;
   right: 0;
-
-  /* https://stackoverflow.com/questions/12394866/how-to-display-images-inline */
-  float: right;
 }
 
 h1 {
@@ -70,7 +67,8 @@ h1 {
 
 div.logo {
   height: 100%;
-  width: 30%;
+
+  /* https://stackoverflow.com/questions/12394866/how-to-display-images-inline */
   float: right;
 }
 
