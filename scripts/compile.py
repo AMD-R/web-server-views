@@ -21,6 +21,7 @@ def get_html(directory: PosixPath | WindowsPath) -> list[PosixPath |
 
 def write_ejs(html_file: PathLike, repository: PathLike) -> None:
     html_file = Path(html_file)
+    parent = Path(dirname(html_file)).name
     # Reading and editing html file
     edited = ""
     with open(html_file, 'r') as f:
@@ -35,6 +36,12 @@ def write_ejs(html_file: PathLike, repository: PathLike) -> None:
                 case "<base href=\"../../\">":
                     # Deleting Lines
                     line = ""
+                case "<body>" if not parent == "includes":
+                    line += "        <%- include('../includes/header') -%>\
+                            \n"
+                case "</body>" if not parent == "includes":
+                    line = "        <%- include('../includes/footer') -%>\
+                            \n" + line
                 # https://stackoverflow.com/questions/2308944/multiple-value-checks-using-in-operator-python
                 case _ if any(string in line for string in ("href", "src")):
                     # Links
@@ -61,9 +68,10 @@ def write_ejs(html_file: PathLike, repository: PathLike) -> None:
             edited += line
 
     # Writing ejs files
-    parent = Path(dirname(html_file)).name
-    results_dir = join(repository, 'views', parent)
+    results_dir = Path(join(repository, 'views', parent))
     results_path = join(results_dir, html_file.name.replace('html', 'ejs'))
+    Path.mkdir(results_dir, exist_ok=True)
+
     with open(results_path, 'w') as f:
         f.write(edited)
 
