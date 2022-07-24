@@ -13,8 +13,10 @@
         <script crossorigin="" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
         <link href="/css/amd-r/amd-r.css" rel="stylesheet" type="text/css"/>
         <link href="/css/base.css" rel="stylesheet" type="text/css"/>
+        <script src="https://kit.fontawesome.com/55e3235dcf.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        <%- include('../includes/header') -%>                            
         <h1 class="title">Dashboard for <span id="name">AMD-R</span> </h1>
         <table class="dashboard">
             <tr class="dashboard">
@@ -59,5 +61,6 @@
             </tr>
         </table>
         <script src="/js/amd-r/amd-r.js"></script>
+        <%- include('../includes/footer') -%>                            
     </body>
 </html>

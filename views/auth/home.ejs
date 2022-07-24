@@ -9,12 +9,7 @@
     <title>AMD-R HomePage</title>
   </head>
   <body>
-    <header>
-      <div class="logo">
-        <img src="/media/auth/Logo.jpg" alt="University Logo">
-      </div>
-    </header>
-
+        <%- include('../includes/header') -%>                            
     <h1 class="title"> HOME PAGE  </h1>
 
     <p class="introduction">AMD-R is an Automated Mail Delivery Robot.</p>
@@ -30,39 +25,6 @@
         <a href="/login" class="menu-item">Login</a>
       </div>
     </section>
-    <footer class="footer">
-      <p class="footer-item">
-        For enquiries or assistance, please contact us by the following
-      </p>
-      <ul class="contact-list">
-        <div class="contact-list-block">
-          <li class="contact-list-item">
-
-
-            <i class="fa-solid fa-phone"></i>
-            <p class="description">+6012696969</p>
-
-          </li>
-        </div>
-        <div class="contact-list-block">
-          <li class="contact-list-item">
-
-
-            <i class="fa-brands fa-google"></i>
-            <p class="description">https://www.nottingham.edu.my</p>
-
-          </li>
-        </div>
-        <div class="contact-list-block">
-          <li class="contact-list-item">
-
-
-            <i class="fa-brands fa-instagram"></i>
-            <p class="description">@UNM</p>
-
-          </li>
-        </div>
-      </ul>
-    </footer>
+        <%- include('../includes/footer') -%>                            
   </body>
 </html>
