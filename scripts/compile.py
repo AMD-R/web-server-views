@@ -30,18 +30,25 @@ def write_ejs(html_file: PathLike, repository: PathLike) -> None:
                 case "<script src=\"scripts/render_ejs.js\"></script>":
                     # Deleting Lines
                     line = ""
+
                 case "<script src=\"scripts/ejs.min.js\"></script>":
                     # Deleting Lines
                     line = ""
+
                 case "<base href=\"../../\">":
                     # Deleting Lines
                     line = ""
-                case "<body>" if not parent == "includes":
-                    line += "        <%- include('../includes/header') -%>\
+
+                case "<%- include('../includes/header.html') -%>"\
+                        if (not parent == "includes"):
+                    line = "        <%- include('../includes/header') -%>\
                             \n"
-                case "</body>" if not parent == "includes":
+
+                case "<%- include('../includes/footer.html') -%>"\
+                        if not parent == "includes":
                     line = "        <%- include('../includes/footer') -%>\
-                            \n" + line
+                            \n"
+
                 # https://stackoverflow.com/questions/2308944/multiple-value-checks-using-in-operator-python
                 case _ if any(string in line for string in ("href", "src")):
                     # Links
