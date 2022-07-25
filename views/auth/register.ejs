@@ -4,11 +4,19 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Register Page</title>
+        <link rel="stylesheet" href="/css/base.css">
+        <script src="https://kit.fontawesome.com/55e3235dcf.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <h1>Register Page</h1>
+        <%- include('../includes/header') -%>                            
+        <h1 class="title">Register Page</h1>
         <form method="post" action="/api/auth/register">
-            <div class="error" style="background-color: red;"></div><br>
+            <div class="error" style="background-color: red;">
+                <% try { %>
+                <%= error %>
+                <% } catch { %>
+                <% } %>
+            </div><br>
             <label for="username">Username</label><br>
             <input type="text" id="username" required name="username"/><br>
             <label for="password">Password</label><br>
@@ -16,5 +24,6 @@
             <input type="submit" value="register"><br>
         </form>
         <a href="/login">Already registered? Login</a>
+        <%- include('../includes/footer') -%>                            
     </body>
 </html>

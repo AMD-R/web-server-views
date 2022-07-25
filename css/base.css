@@ -55,13 +55,13 @@ body {
   display: grid;
 }
 
-img {
+img.logo {
   display: block;
   height: 100%;
   right: 0;
 }
 
-h1 {
+h1.title {
   margin: 0;
 }
 
