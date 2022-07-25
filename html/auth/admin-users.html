@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <base href="../../">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin page</title>
+        <script src="scripts/ejs.min.js"></script>
+        <link rel="stylesheet" href="css/base.css">
+        <script src="https://kit.fontawesome.com/55e3235dcf.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <%- include('../includes/header.html') -%>
+        <h1 class="title">Users</h1>
+        <ul></ul>
+        <button class="logout"> <a href="/logout">Log Out</a></button>
+        <script>
+         const ul = document.querySelector('ul')
+         const display = document.querySelector('.display')
+
+         const getUsers = async () => {
+             const res = await fetch('/api/auth/getUsers')
+             const data = await res.json()
+             data.user.map((mappedUser) => {
+                 if(mappedUser.username !== 'admin'){
+                     let li = `<li> <b>Username</b> => ${mappedUser.username} <br> <b>Role</b> => ${mappedUser.role} </li> <button class="edit">Edit Role</button> <button class="delete">Delete User</button>`
+                     ul.innerHTML += li
+                 }else{
+                     return null
+                 }
+                 const editRole = document.querySelectorAll('.edit')
+                 const deleteUser = document.querySelectorAll('.delete')
+
+                 editRole.forEach((button, i) => {
+                     button.addEventListener('click', async() => {
+                         display.textContent= ''
+                         const id = data.user[i].id
+                         const res = await fetch('/api/auth/update', {
+                             method: 'PUT',
+                             body: JSON.stringify({ role: 'admin', id}),
+                             headers: { 'Content-Type': 'application/json' }
+                         })
+                         const dataUpdate = await res.json()
+                         if (res.status === 400 || res.status === 401) {
+                             document.body.scrollTop = 0
+                             document.documentElement.scrollTop = 0
+                             return display.textContent = `${dataUpdate.message}. ${dataUpdate.error ? dataUpdate.error : ''}`
+                         }
+                         location.reload()
+                     })
+                 });
+                 deleteUser.forEach((button, i)=> {
+                     button.addEventListener('click', async ()=> {
+                         display.textContent =''
+                         const id = data.user[i].id
+                         const res = await fetch('/api/auth/deleteUser', {
+                             method: 'DELETE',
+                             body: JSON.stringify({id}),
+                             headers: {'Content-Type': 'application/json'}
+                         })
+                         const dataDelete = await res.json()
+                         if (res.status === 401){
+                             document.body.scrollTop = 0
+                             document.documentElement.scrollTop = 0
+                             return display.textContent = `${dataUpdate.message}. ${dataUpdate.error ? dataUpdate.error : ''}`
+                         }
+                         location.reload()
+                     })
+                 })
+             })
+         }
+         getUsers()
+        </script>
+        <%- include('../includes/footer.html') -%>
+        <script src="scripts/render_ejs.js"></script>
+    </body>
+</html>
