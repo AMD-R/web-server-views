@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <base href="../../">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,12 @@
         <!-- https://cdnjs.com/libraries/qrcodejs -->
         <!-- https://github.com/davidshimjs/qrcodejs -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-        <link rel="stylesheet" href="/css/base.css">
+        <script src="scripts/ejs.min.js"></script>
+        <link rel="stylesheet" href="css/base.css">
         <script src="https://kit.fontawesome.com/55e3235dcf.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <%- include('../includes/header') -%>                            
+        <%- include('../includes/header.html') -%>
         <h1 class="title">QR Code</h1>
         <div>Raw OTP Data: <span id="raw"></span></div>
         <div id="qrcode"></div>
@@ -39,6 +41,7 @@
          }
          otpLoop();
         </script>
-        <%- include('../includes/footer') -%>                            
+        <%- include('../includes/footer.html') -%>
+        <script src="scripts/render_ejs.js"></script>
     </body>
 </html>

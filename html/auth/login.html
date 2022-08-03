@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <base href="../../">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="/css/base.css">
+    <script src="scripts/ejs.min.js"></script>
+    <link rel="stylesheet" href="css/base.css">
     <script src="https://kit.fontawesome.com/55e3235dcf.js" crossorigin="anonymous"></script>
   </head>
   <body>
-        <%- include('../includes/header') -%>                            
+    <%- include('../includes/header.html') -%>
     <h1 class="title">Login Page</h1>
     <form method="post" action="/api/auth/login">
       <div class="error" style="background-color: red;">
@@ -24,6 +26,7 @@
       <input type="submit" value="login"><br>
     </form>
     <a href="/register">Don't have an accout? Register</a>
-        <%- include('../includes/footer') -%>                            
+    <%- include('../includes/footer.html') -%>
+    <script src="scripts/render_ejs.js"></script>
   </body>
 </html>
